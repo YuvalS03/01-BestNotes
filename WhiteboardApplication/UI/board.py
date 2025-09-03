@@ -237,7 +237,7 @@ class Ui_MainWindow(object):
         font1 = QFont()
         font1.setBold(True)
         self.menubar.setFont(font1)
-        self.menubar.setStyleSheet(u"background-color: rgb(141, 200, 216);\n"
+        self.menubar.setStyleSheet(u"background-color: rgb(255, 204, 204);\n"
 "color: rgb(255, 255, 255);")
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
@@ -280,8 +280,8 @@ class Ui_MainWindow(object):
         self.menuCollab.addAction(self.actionJoin)
         self.menuCollab.addAction(self.actionChat)
         self.menuHelp.addAction(self.actionDocument)
-        self.tb_toolbar_main_window.addAction(self.tb_actionCursor)
         self.tb_toolbar_main_window.addAction(self.tb_actionPen)
+        self.tb_toolbar_main_window.addAction(self.tb_actionCursor)
         self.tb_toolbar_main_window.addAction(self.tb_actionEraser)
         self.tb_toolbar_main_window.addAction(self.tb_actionHighlighter)
         self.tb_toolbar_main_window.addAction(self.tb_actionLine)

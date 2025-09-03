@@ -32,7 +32,7 @@ class TextBox(QGraphicsTextItem):
         handle_colors = {
             'topleft': QColor(255, 0, 0),     # Red doesn't work
             'top': QColor(0, 255, 0),         # Green doesn't work
-            'topright': QColor(0, 0, 255),    # Blue
+            'topright': QColor(0, 255, 255),    # Cyan
             'right': QColor(255, 255, 0),     # Yellow doesn't work
             'bottomright': QColor(255, 0, 255), # Magenta
             'bottom': QColor(0, 255, 255),    # Cyan

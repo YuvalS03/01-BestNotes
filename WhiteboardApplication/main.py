@@ -354,6 +354,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.actionChangeBackground = QAction("Change Background Color...", self)
+        self.menuBar().addAction(self.actionChangeBackground)
+        self.actionChangeBackground.triggered.connect(self.change_background_color)
 
         self.client = None
 
@@ -394,11 +397,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         menu.addAction("Pen Eraser", self.penEraser_action)
         self.tb_actionEraser.setMenu(menu)
 
-        self.eraser_color = QColor("#F3F3F3")
+        self.eraser_color = QColor("#6A5F31")
 
 
 
-        self.current_color = QColor("#000000")
+        self.current_color = QColor("#6A5F31")
 
         ############################################################################################################
 
@@ -406,7 +409,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Define what the tool buttons do
         ###########################################################################################################
-        self.current_color = QColor("#000000")
+        self.current_color = QColor("#6A5F31")
         #self.tb_Pen.triggered.connect(lambda e: self.color_changed(self.current_color))
         # This eraser just changes stuff to white (#FFFFFF) and not to the proper background color of window... - RS 10/30
         # I used an online tool to find out the proper color of the background and updated it below... - RS 10/30
@@ -583,12 +586,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     #         shape_item = QGraphicsEllipseItem(0, 0, 40, 20)
     #     self.tabWidget.currentWidget().findChild(QGraphicsView, 'gv_Canvas').scene().add_shape(shape_item)
 
-    # def change_background_color(self):
-    #     # Open a color board and set the background color
-    #     color = QColorDialog.getColor()
-    #     if color.isValid():
-    #         # Update backround color
-    #         self.scene.setBackgroundBrush(color)
+    def change_background_color(self):
+        scene = self.tabWidget.currentWidget().findChild(QGraphicsView, 'gv_Canvas').scene()
+        color = QColorDialog.getColor(scene.backgroundBrush().color(), self, "Choose page background")
+        if color.isValid():
+            scene.setBackgroundBrush(QBrush(color))
+            self.eraser_color = color 
+
 
     def enable_eraser(self, enable):
         self.erasing_enabled = enable
